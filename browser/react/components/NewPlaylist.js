@@ -9,7 +9,8 @@ export default class extends Component {
     render() {
         const onSubmit = this.props.onSubmit;
         const onChange = this.props.onChange;
-        const playlistName = this.props.value;
+        const disabled = this.props.disabled;
+        const playlistName = this.props.value ? this.props.value : '';
 
         // console.log("we are setting the playlistName from the Container's State", playlistName);
 
@@ -26,7 +27,7 @@ export default class extends Component {
                         </div>
                         <div className="form-group">
                             <div className="col-xs-10 col-xs-offset-2">
-                                <button type="submit" className="btn btn-success" disabled={ !onSubmit } >Create Playlist</button>
+                                <button type="submit" className="btn btn-success" disabled={ disabled } >Create Playlist</button>
                             </div>
                         </div>
                     </fieldset>
