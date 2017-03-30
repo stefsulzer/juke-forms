@@ -6,6 +6,7 @@ const initialState = {
   currentSong: {},
   currentSongList: [],
   isPlaying: false,
+  playlistArray: [],
   progress: 0
 };
 

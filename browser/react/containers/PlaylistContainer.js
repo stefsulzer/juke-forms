@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import NewPlaylist from '../components/NewPlaylist';
 
@@ -20,19 +21,22 @@ export default class extends Component {
     this.setState({
       playlistName: e.target.value,
       initialLoad: false
-    })
-    this.state.playlistName.length === 0 || this.state.playlistName.length > 16 ?
+    });
+    // WE HAVE A BUT WEHRE THE BUTTON DOESN"T DISABLE AT ""
+    ((this.state.playlistName === "" || this.state.playlistName == null ) || (this.state.playlistName.length > 16)) ?
       this.setState({ disabled: true }) :
-      this.setState({ disabled: false })
+      this.setState({ disabled: false });
   }
 
   onSubmit(e) {
     e.preventDefault(); // Why e? e.preventDefault() : null;
-    console.log("form value", this.state.playlistName);
+    this.props.createPlaylist();
     this.setState({
-      playlistName: ''
+      playlistName: "",
+      initialLoad: true
     });
   }
+
 
   render() {
     const playlistName = this.state.playlistName;

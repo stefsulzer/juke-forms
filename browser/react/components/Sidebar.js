@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 const Sidebar = (props) => {
 
+  const playlistArray = props.playlistArray;
+
   return (
     <sidebar>
       <img src="juke.svg" className="logo" />
@@ -24,6 +26,18 @@ const Sidebar = (props) => {
             <span className="glyphicon glyphicon-plus"></span> PLAYLIST
           </Link>
         </h4>
+
+        <ul className="">
+        {
+          playlistArray.map((playlist) => {
+            return (
+                    <li className="playlist-item menu-item" key={ playlist.id }>
+                      <Link to="FILL_ME_IN" >{ playlist.name }</Link>
+                    </li>
+                    )
+          })
+        }
+        </ul>
       </section>
     </sidebar>
   );
