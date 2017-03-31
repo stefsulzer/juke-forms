@@ -46,8 +46,8 @@ export default class AppContainer extends Component {
   onLoad (albums, artists, playlists) {
     this.setState({
       albums: convertAlbums(albums),
-      artists: artists, // PROBLEM HERE!
-      playlistArray: [...this.state.playlistArray, playlists]
+      artists: artists,
+      playlistArray: playlists
     });
   }
 
@@ -127,12 +127,12 @@ export default class AppContainer extends Component {
     this.setState({ selectedArtist: artist });
   }
 
-  createPlaylist() {
-    axios.post('/api/playlists', { name: this.state.playlistName })
+  createPlaylist(playlist) {
+    axios.post('/api/playlists', { name: playlist })
   .then(res => res.data)
   .then(result => {
     this.setState({
-      playlistArray: result
+      playlistArray: [...this.state.playlistArray, result]
     });
     console.log("Here's the playlist!!", result);// response json from the server!
   });
